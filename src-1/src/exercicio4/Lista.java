@@ -4,13 +4,44 @@ public class Lista {
 	No inicio;
 	No fim;
 	
-	// método para inserir um elemento na lista.
-	// a inserção deve manter a lista ordenada (ordem crescente)
+	// mï¿½todo para inserir um elemento na lista.
+	// a inserï¿½ï¿½o deve manter a lista ordenada (ordem crescente)
 	public void inserir(int dado) {
 		
+		No no = new No(dado);
+		No aux = inicio;
+
+		if (inicio == null) {
+			inicio = no;
+			fim = no;
+
+		} else if (no.dado >= fim.dado){
+			fim.dir = no;
+			no.esq = fim;
+			fim = aux;
+
+		} else if (no.dado <= inicio.dado){
+			inicio.esq = no;
+			no.dir = inicio;
+			inicio = no;
+
+		} else{
+			while(aux != null){		
+				if(no.dado >= aux.dado && no.dado <= aux.dir.dado){
+					aux.dir.esq = no;
+					no.dir = aux.dir;
+					no.esq = aux;
+					aux.dir = no;
+					break;
+					
+				}
+				aux = aux.dir;
+				
+			}
+		}
 	}
 	
-	// método para imprimir os elementos da lista
+	// mï¿½todo para imprimir os elementos da lista
 	public void imprimir() {
 		No aux = inicio;
 		while(aux != null) {
