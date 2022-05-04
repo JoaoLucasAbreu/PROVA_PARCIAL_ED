@@ -18,7 +18,7 @@ public class Lista {
 		} else if (no.dado >= fim.dado){
 			fim.dir = no;
 			no.esq = fim;
-			fim = aux;
+			fim = no;
 
 		} else if (no.dado <= inicio.dado){
 			inicio.esq = no;
